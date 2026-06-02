@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Anniversary Surprise ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    overflow-x:hidden;
+    background:linear-gradient(
+        135deg,
+        #ffe6f0,
+        #ffd6eb,
+        #fff0f5
+    );
+}
+
+.container{
+    width:90%;
+    max-width:1200px;
+    margin:auto;
+}
+
+.hidden{
+    display:none;
+}
+
+/*Screen*/
+.hidden{
+    display:none !important;
+}
+
+.loading-screen,
+.countdown-screen{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+
+    background:
+    linear-gradient(
+        135deg,
+        #fff3fa,
+        #fdf7ff
+    );
+
+    padding:20px;
+}
+
+.loader-circle{
+    width:120px;
+    height:120px;
+
+    border:4px solid #ffb6d5;
+    border-top-color:#ff4d88;
+
+    border-radius:50%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-size:42px;
+
+    animation:spin 2s linear infinite;
+}
+
+@keyframes spin{
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+.loading-text{
+    margin-top:20px;
+    color:#c16de5;
+    font-size:28px;
+}
+
+.loading-dots{
+    margin-top:15px;
+}
+
+.loading-dots span{
+    width:12px;
+    height:12px;
+
+    background:#ff69b4;
+
+    border-radius:50%;
+
+    display:inline-block;
+
+    margin:0 4px;
+
+    animation:bounce 1s infinite;
+}
+
+.loading-dots span:nth-child(2){
+    animation-delay:.2s;
+}
+
+.loading-dots span:nth-child(3){
+    animation-delay:.4s;
+}
+
+@keyframes bounce{
+    50%{
+        transform:translateY(-10px);
+    }
+}
+
+.countdown-title{
+    color:#cc59dd;
+    font-size:2rem;
+    margin-bottom:10px;
+}
+
+.countdown-subtitle{
+    color:#9b59b6;
+    margin-bottom:25px;
+}
+
+.countdown-grid{
+    width:100%;
+    max-width:450px;
+
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
+}
+
+.time-card{
+    background:white;
+
+    padding:25px;
+
+    border-radius:20px;
+
+    box-shadow:
+    0 10px 20px rgba(0,0,0,.08);
+}
+
+.time-card div{
+    font-size:42px;
+    font-weight:bold;
+    color:#cc59dd;
+}
+
+.countdown-footer{
+    margin-top:25px;
+    color:#ff4d88;
+}
+
+/*loading screen*/
+.loading-screen,
+.countdown-screen{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:20px;
+    background:linear-gradient(
+        135deg,
+        #fff0f8,
+        #fdf7ff
+    );
+}
+
+.loader-circle{
+    width:120px;
+    height:120px;
+    border:4px solid #ffb6d5;
+    border-top-color:#ff4d88;
+    border-radius:50%;
+    animation:spin 2s linear infinite;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:40px;
+}
+
+@keyframes spin{
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+.loading-text{
+    margin-top:20px;
+    color:#b85acb;
+    font-size:24px;
+    font-weight:600;
+}
+
+.loading-dots span{
+    display:inline-block;
+    margin:0 4px;
+    width:10px;
+    height:10px;
+    background:#ff69b4;
+    border-radius:50%;
+    animation:bounce 1s infinite;
+}
+
+.loading-dots span:nth-child(2){
+    animation-delay:.2s;
+}
+
+.loading-dots span:nth-child(3){
+    animation-delay:.4s;
+}
+
+@keyframes bounce{
+    50%{
+        transform:translateY(-8px);
+    }
+}
+
+/*countdown cards*/
+.countdown-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
+    width:100%;
+    max-width:450px;
+    margin-top:30px;
+}
+
+.time-card{
+    background:white;
+    border-radius:18px;
+    padding:25px;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+}
+
+.time-value{
+    font-size:42px;
+    font-weight:700;
+    color:#c055d7;
+}
+
+.time-label{
+    color:#8a59c2;
+}
+
+/*letter style*/
+.love-letter{
+    margin-top:80px;
+}
+
+.love-letter h2{
+    text-align:center;
+    color:#b54ed3;
+    margin-bottom:25px;
+}
+
+.letter-card{
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+    line-height:1.8;
+    color:#555;
+    border-top:5px solid #d76df0;
+    border-bottom:5px solid #ff69b4;
+}
+
+.footer-love{
+    text-align:center;
+    padding:50px 20px;
+    color:#ff4d88;
+    font-weight:600;
+}
+
+/*mobile responsiveness*/
+@media(max-width:768px){
+
+.hero h1{
+    font-size:34px;
+}
+
+.gallery{
+    grid-template-columns:1fr;
+}
+
+.countdown-grid{
+    grid-template-columns:1fr 1fr;
+}
+
+.time-value{
+    font-size:32px;
+}
+
+.letter-card{
+    padding:20px;
+}
+
+}
+
+/* Floating Hearts */
+
+.hearts{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    overflow:hidden;
+    z-index:1;
+}
+
+.heart{
+    position:absolute;
+    color:#ff4d88;
+    font-size:20px;
+    animation:float 8s linear infinite;
+    opacity:.3;
+}
+
+@keyframes float{
+    from{
+        transform:translateY(100vh);
+    }
+    to{
+        transform:translateY(-120px);
+    }
+}
+
+/* Reveal Card */
+
+.reveal-section{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.reveal-card{
+    background:white;
+    width:400px;
+    max-width:90%;
+    padding:40px;
+    border-radius:30px;
+    text-align:center;
+    cursor:pointer;
+    box-shadow:0 15px 40px rgba(0,0,0,.15);
+    transition:.3s;
+}
+
+.reveal-card:hover{
+    transform:translateY(-5px);
+}
+
+.gift{
+    font-size:70px;
+}
+
+.reveal-card h1{
+    color:#ff4081;
+    margin-top:15px;
+}
+
+.reveal-card p{
+    color:#666;
+    margin-top:10px;
+}
+
+/* Main Content */
+
+.hero{
+    padding:100px 20px 50px;
+    text-align:center;
+}
+
+.hero h1{
+    font-size:60px;
+    color:#ff4081;
+}
+
+.hero p{
+    color:#555;
+    margin-top:15px;
+    font-size:20px;
+}
+
+.card{
+    background:white;
+    padding:40px;
+    border-radius:30px;
+    box-shadow:0 10px 30px rgba(0,0,0,.1);
+}
+
+.journey{
+    text-align:center;
+}
+
+.journey h2{
+    color:#ff4081;
+    margin-bottom:20px;
+}
+
+.days{
+    font-size:90px;
+    font-weight:700;
+    color:#ff4d88;
+}
+
+.gallery-section{
+    margin-top:80px;
+}
+
+.gallery-title{
+    text-align:center;
+    font-size:40px;
+    color:#ff4081;
+    margin-bottom:40px;
+}
+
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+.photo-card{
+    background:white;
+    border-radius:20px;
+    padding:15px;
+    cursor:pointer;
+    transition:.3s;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+.photo-card:hover{
+    transform:scale(1.03);
+}
+
+.photo-card img{
+    width:100%;
+    height:300px;
+    object-fit:cover;
+    border-radius:15px;
+}
+
+.photo-card p{
+    text-align:center;
+    margin-top:10px;
+    font-weight:600;
+}
+
+/* Modal */
+
+.modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.85);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:999;
+}
+
+.modal img{
+    max-width:90%;
+    max-height:90%;
+    border-radius:20px;
+}
+
+.close{
+    position:absolute;
+    top:20px;
+    right:30px;
+    color:white;
+    font-size:40px;
+    cursor:pointer;
+}
+
+/* Confetti */
+
+.confetti{
+    position:fixed;
+    width:10px;
+    height:10px;
+    animation:fall linear forwards;
+    z-index:9999;
+}
+
+@keyframes fall{
+    to{
+        transform:translateY(100vh) rotate(720deg);
+    }
+}
+
+@media(max-width:768px){
+
+.hero h1{
+    font-size:40px;
+}
+
+.days{
+    font-size:60px;
+}
+
+.gallery-title{
+    font-size:30px;
+}
+
+}
+
+</style>
+</head>
+<body>
+
+    <!-- Loading Screen -->
+
+<section id="loadingScreen" class="loading-screen">
+
+    <div class="floating-heart">💖</div>
+
+    <div class="loader-circle">
+        ❤️
+    </div>
+
+    <h2 class="loading-text">
+        Loading our love story...
+    </h2>
+
+    <div class="loading-dots">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+</section>
+
+<!-- Countdown Screen -->
+
+<section id="countdownScreen"
+         class="countdown-screen hidden">
+
+    <h1 class="countdown-title">
+        🌸 Our Anniversary is Coming! 🌸
+    </h1>
+
+    <p class="countdown-subtitle">
+        The countdown to our special day ❤️
+    </p>
+
+    <div class="countdown-grid">
+
+        <div class="time-card">
+            <div id="days">0</div>
+            <span>Days</span>
+        </div>
+
+        <div class="time-card">
+            <div id="hours">0</div>
+            <span>Hours</span>
+        </div>
+
+        <div class="time-card">
+            <div id="minutes">0</div>
+            <span>Minutes</span>
+        </div>
+
+        <div class="time-card">
+            <div id="seconds">0</div>
+            <span>Seconds</span>
+        </div>
+
+    </div>
+
+    <p class="countdown-footer">
+        Until our special day ❤️
+    </p>
+
+</section>
+
+<div class="hearts" id="hearts"></div>
+
+<!-- Reveal Section -->
+
+<section class="reveal-section" id="revealSection">
+
+<div class="reveal-card" onclick="revealWebsite()">
+
+<div class="gift">🎁</div>
+
+<h1>Your Anniversary Surprise Awaits!</h1>
+
+<p>Tap here to reveal ❤️</p>
+
+</div>
+
+</section>
+
+<!-- Main Website -->
+
+<div id="mainContent" class="hidden">
+
+<section class="hero">
+
+<h1>Happy Anniversary ❤️</h1>
+
+<p>Every moment with you is magical</p>
+
+</section>
+
+<div class="container">
+
+<div class="card journey">
+
+<h2>Our Beautiful Journey Together</h2>
+
+<div class="days" id="daysCounter">0</div>
+
+<h3>Beautiful Days Together</h3>
+
+<p style="margin-top:15px;color:#666;">
+Every moment with you is a blessing ❤️
+</p>
+
+</div>
+
+<section class="gallery-section">
+
+<h2 class="gallery-title">
+Our Precious Moments
+</h2>
+
+<div class="gallery">
+
+<div class="photo-card">
+<img src="images/3.jpeg" alt="Our First Memory">
+<p>Our First Memory ❤️</p>
+</div>
+
+<div class="photo-card">
+<img src="images/4.jpeg" alt="Beautiful Day">
+<p>Beautiful Day 💕</p>
+</div>
+
+<div class="photo-card">
+<img src="images/1.jpeg" alt="Together Forever">
+<p>Together Forever 💖</p>
+</div>
+
+<div class="photo-card">
+<img src="images/2.jpeg" alt="Special Moment">
+<p>Special Moment 🌹</p>
+</div>
+
+</div>
+
+</section>
+
+<section class="love-letter">
+
+<h2>💌 A Letter From My Heart</h2>
+
+<div class="letter-card">
+
+<p><strong>Dear Love,</strong></p>
+
+<p>
+This journey with you has been the most beautiful adventure of my life...
+</p>
+
+<p>
+From our first meeting to today, you've filled my life with joy, laughter and unconditional love.
+</p>
+
+<p>
+As we celebrate another year together, I want you to know that my love for you grows stronger every day.
+</p>
+
+<p>
+Happy Anniversary, my love! Here's to many more years of creating beautiful memories together.
+</p>
+
+<p>
+With all my heart,
+</p>
+
+<p>
+Me ❤️
+</p>
+
+</div>
+
+</section>
+
+<footer class="footer-love">
+
+Made with ❤️ for our Anniversary
+
+</footer>
+
+</div>
+
+</div>
+
+<!-- Modal -->
+
+<div class="modal" id="modal">
+
+<span class="close" onclick="closeModal()">
+×
+</span>
+
+<img id="modalImage">
+
+</div>
+
+<script>
+
+const anniversaryDate =
+new Date("2026-06-02T00:00:00");
+
+window.onload = () => {
+
+    setTimeout(() => {
+
+        document
+        .getElementById("loadingScreen")
+        .classList.add("hidden");
+
+        document
+        .getElementById("countdownScreen")
+        .classList.remove("hidden");
+
+        startCountdown();
+
+    },3000);
+
+};
+
+function startCountdown(){
+
+    const anniversaryDate =
+    new Date("2026-06-02T00:00:00");
+
+    const timer =
+    setInterval(() => {
+
+        const now = new Date();
+
+        const diff =
+        anniversaryDate - now;
+
+        if(diff <= 0){
+
+            clearInterval(timer);
+
+            document
+            .getElementById("countdownScreen")
+            .classList.add("hidden");
+
+            document
+            .getElementById("mainContent")
+            .classList.remove("hidden");
+
+            launchConfetti();
+
+            return;
+        }
+
+        const days =
+        Math.floor(
+            diff /
+            (1000*60*60*24)
+        );
+
+        const hours =
+        Math.floor(
+            diff %
+            (1000*60*60*24) /
+            (1000*60*60)
+        );
+
+        const minutes =
+        Math.floor(
+            diff %
+            (1000*60*60) /
+            (1000*60)
+        );
+
+        const seconds =
+        Math.floor(
+            diff %
+            (1000*60) /
+            1000
+        );
+
+        document
+        .getElementById("days")
+        .innerText = days;
+
+        document
+        .getElementById("hours")
+        .innerText = hours;
+
+        document
+        .getElementById("minutes")
+        .innerText = minutes;
+
+        document
+        .getElementById("seconds")
+        .innerText = seconds;
+
+    },1000);
+}
+
+/* Floating Hearts */
+
+const heartsContainer =
+document.getElementById("hearts");
+
+for(let i=0;i<30;i++){
+
+const heart =
+document.createElement("div");
+
+heart.className="heart";
+heart.innerHTML="❤";
+
+heart.style.left=
+Math.random()*100+"%";
+
+heart.style.animationDuration=
+(5+Math.random()*5)+"s";
+
+heart.style.fontSize=
+(15+Math.random()*25)+"px";
+
+heart.style.animationDelay=
+Math.random()*5+"s";
+
+heartsContainer.appendChild(heart);
+
+}
+
+/* Reveal */
+
+function revealWebsite(){
+
+document.getElementById(
+"revealSection"
+).style.display="none";
+
+document.getElementById(
+"mainContent"
+).classList.remove("hidden");
+
+startCounter();
+
+launchConfetti();
+
+}
+
+/* Day Counter */
+
+function startCounter(){
+
+const target = 8760;
+const duration = 3000; // 3 seconds
+
+let start = 0;
+let startTime = null;
+
+function animate(timestamp){
+
+    if(!startTime) startTime = timestamp;
+
+    const progress = Math.min(
+        (timestamp - startTime) / duration,
+        1
+    );
+
+    const value = Math.floor(progress * target);
+
+    document.getElementById("daysCounter").innerText = value;
+
+    if(progress < 1){
+        requestAnimationFrame(animate);
+    }
+}
+
+requestAnimationFrame(animate);
+
+}
+
+/* Gallery Modal */
+
+const cards =
+document.querySelectorAll(".photo-card img");
+
+cards.forEach(img=>{
+
+img.addEventListener("click",()=>{
+
+document.getElementById(
+"modal"
+).style.display="flex";
+
+document.getElementById(
+"modalImage"
+).src=img.src;
+
+});
+
+});
+
+function closeModal(){
+
+document.getElementById(
+"modal"
+).style.display="none";
+
+}
+
+document.getElementById("modal")
+.addEventListener("click",e=>{
+
+if(e.target.id==="modal"){
+closeModal();
+}
+
+});
+
+/* Confetti */
+
+function launchConfetti(){
+
+for(let i=0;i<150;i++){
+
+const confetti =
+document.createElement("div");
+
+confetti.classList.add("confetti");
+
+confetti.style.left =
+Math.random()*100+"vw";
+
+confetti.style.top="-10px";
+
+confetti.style.background=
+`hsl(${Math.random()*360},
+100%,60%)`;
+
+confetti.style.width=
+(5+Math.random()*8)+"px";
+
+confetti.style.height=
+(5+Math.random()*8)+"px";
+
+confetti.style.animationDuration=
+(2+Math.random()*3)+"s";
+
+document.body.appendChild(confetti);
+
+setTimeout(()=>{
+confetti.remove();
+},5000);
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
